@@ -12,6 +12,7 @@ var filesToCache = [
   '/katex/katex.min.css',
   '/katex/katex.min.js',
   '/katex/contrib/auto-render.min.js',
+  '/katex/fonts',
   '/katex/fonts/KaTeX_Main-Regular.woff2',
   '/katex/fonts/KaTeX_Math-Italic.woff2',
   '/katex/fonts/KaTeX_Main-Regular.woff',
