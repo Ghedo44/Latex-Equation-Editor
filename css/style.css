@@ -1,23 +1,69 @@
-body {
+html{ 
   font-family: sans-serif;
-}
-
-/* Make content area fill the entire browser window */
-html,
-.fullscreen {
-  display: flex;
-  height: 100%;
+  position: absolute;
   margin: 0;
   padding: 0;
+  top: 3%;
+  bottom: 3%;
+  right: 3%;
+  left: 3%;
+
+  border: 2px solid red;
+}
+
+body {
+  height: 100%;
   width: 100%;
+  margin: 0;
+
+  border: 2px solid grey;
 }
 
-/* Center the content in the browser window */
-.container {
-  margin: auto;
+
+h1{
   text-align: center;
+  color: #957dad;
+  font-family: 'Montserrat', sans-serif;
+
+  border: 2px solid yellow;
 }
 
-.title {
-  font-size: 3rem;
+button{
+  margin: 3px;
+  border-color:  #957dad !important;
+  color: #888888 !important;
+  margin-bottom: 3px;
+}
+button:hover{
+  background-color: #fec8d8 !important;
+}
+
+textarea{
+  padding: 5%;
+  border-color: #957dad;
+  border-width: thick;
+  resize: none;
+}
+
+.flex-box{
+  display:flex;
+  justify-content: center;
+
+  border: 2px solid black;
+}
+
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 2px solid green;
+  
+}
+
+.render{
+  padding: 5%;
+  height: 20%;
+  text-align: center;
 }
