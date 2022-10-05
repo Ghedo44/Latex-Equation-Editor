@@ -1,5 +1,5 @@
 # LatexEquationEditor
 
 # To-Do
--[] codice javascript
--[] layout
+- [ ] codice javascript
+- [ ] layout
