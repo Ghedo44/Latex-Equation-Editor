@@ -29,26 +29,27 @@
       <h1 class="shadow-sm">LATEXT EQUATION EDITOR</h1>
         <div class="flex-box">
           <div class="row">
-            <div class="col">
-              <button type="button" onclick="applyLatex(0)" >$$x^n$$</button>
+            <div class="flex-box">
+              <div  id="latex_render" class="latex">$$\Sigma$$</div>
             </div>
+          </div>
+        <br>
+        <div class="row">
+          <div class="flex-box">
+            <textarea  id="latex_editor" class="latex" rows="15" cols="100" spellcheck="false" placeholder="Your latext equation here "></textarea>
           </div>
         </div>
         <br>
         <div class="row">
-          <div class="col-md-3 col-sm-3">
-          </div>
-          <div class="col-md-6 col-sm-9">
-            <div class="flex-box">
-              <textarea  id="latex_editor" class="latex" rows="15" cols="100" spellcheck="false" placeholder="Your latext equation here "></textarea>
-            </div>
-          </div>
-          <div class="col-md-3">
+          <div class="col">
+            <button type="button" onclick="applyLatex(0)" >$$x^n$$</button>
           </div>
         </div>
+      </div>
       </section>
     
     <script src="js/main.js"></script>
+    <script src="js/latex_render.js"></script>
     <script src="js/latex_codes.js"></script>
     <script src="js/editor.js" defer></script>
   </body>
