@@ -8,3 +8,4 @@ Test site: https://ghedo44.github.io/LatexEquationEditor/
 
 ## Medium term
 - [ ] Snippets
+- [ ] Icons
