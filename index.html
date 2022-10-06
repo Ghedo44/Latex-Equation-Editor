@@ -23,34 +23,74 @@
     <script defer src="katex/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body);"></script>
   </head>
-  <body style="transition: all 0.25s ease 0s, transform 0.05s ease 0s; cursor: default;">
+  <body>
 
-      <div class="container">
-        <div class="navbar">
-          <div class="logo">$$\Sigma$$</div>
-          <h1>latex equation editor</h1>
-        </div>
-        
+      <div class="wrapper">
 
-        <!-- Equation Render -->
-        <div class="flex-box render" id="latex_render">
-          
-        </div>
+        <header class="page-header">
+          <nav>
+            <div class="logo">
+              <h2 class="sigma">$$\Sigma$$</h2>
+              <h2 >latex equation editor</h2>
+            </div>
+           
+            <ul>
+              <li>
+                <a href="">Work</a>
+              </li>
+              <li>
+                <a href="">Services</a>
+              </li>
+              <li>
+                <a href="">Team</a>
+              </li>
+              <li>
+                <a href="">Careers</a>
+              </li>
+            </ul>
+            <button class="cta-contact">Get in touch</button>
+          </nav>
+        </header>
 
-        <!-- Text Area -->
-        <div class="flex-box">
-            <textarea  id="latex_editor" rows="15" cols="100" spellcheck="false" placeholder="Your latext equation here "></textarea>
-        </div>
+        <main class="page-main">
 
-        <!-- Buttons -->
-        <div class="flex-box">
-          <button type="button" onclick="applyLatex(0)" >$$x^n$$</button>
-          <button type="button" onclick="applyLatex(2)" >$$x_n$$</button>
-          <button type="button" onclick="applyLatex(4)" >$$\sqrt x$$</button>
-        </div>
-      </div>
-      
-      
+          <div class="equation-renderer" id="latex_render"></div>
+  
+          <textarea  id="latex_editor"  spellcheck="false" placeholder="Your latext equation here "></textarea>
+         
+  
+          <div class="buttons-box">
+            <button type="button" onclick="applyLatex(0)" >$$x^n$$</button>
+            <button type="button" onclick="applyLatex(2)" >$$x_n$$</button>
+            <button type="button" onclick="applyLatex(4)" >$$\sqrt x$$</button>
+          </div>
+        </main>
+
+        <footer class="page-footer">
+          <small>Test site</small>
+          <ul>
+            <li>
+              <a href="" target="_blank">
+                <i class="icon ion-logo-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="" target="_blank">
+                <i class="icon ion-logo-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="" target="_blank">
+                <i class="icon ion-logo-linkedin"></i>
+              </a>
+            </li>
+            <li>
+              <a href="" target="_blank">
+                <i class="icon ion-logo-github"></i>
+              </a>
+            </li>
+          </ul>
+        </footer>
 
     
     <script src="js/main.js"></script>
