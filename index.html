@@ -23,14 +23,18 @@
     <script defer src="katex/contrib/auto-render.min.js"
         onload="renderMathInElement(document.body);"></script>
   </head>
-  <body>
+  <body style="transition: all 0.25s ease 0s, transform 0.05s ease 0s; cursor: default;">
 
       <div class="container">
-        <h1 class="shadow-sm">LATEXT EQUATION EDITOR</h1>
+        <div class="navbar">
+          <div class="logo">$$\Sigma$$</div>
+          <h1>latex equation editor</h1>
+        </div>
+        
 
         <!-- Equation Render -->
         <div class="flex-box render" id="latex_render">
-          $$\Sigma$$
+          
         </div>
 
         <!-- Text Area -->

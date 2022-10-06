@@ -1,12 +1,24 @@
+let equation = "\\sum_0^\\infty";
+const render = document.getElementById("latex_render")
+
+window.onload = () => {
+    katex.render(equation, render, {
+        displayMode: true
+    });
+}
 
 document.getElementById("latex_editor").addEventListener("input", () => 
 {
     if (editor.value)
     {
-        document.getElementById("latex_render").innerHTML = katex.renderToString(editor.value);
+        katex.render(editor.value, render, {
+            displayMode: true
+        });
     }
     else
     {
-        document.getElementById("latex_render").innerHTML = katex.renderToString("\\Sigma");
+        katex.render(equation, render, {
+            displayMode: true
+        });
     }
 });
