@@ -137,7 +137,7 @@ body {
   padding: 5%;
   font-size: large;
   text-align: center;
-
+  padding: 0;
 }
 
 .page-main textarea{
