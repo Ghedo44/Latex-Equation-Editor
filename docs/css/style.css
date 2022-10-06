@@ -35,8 +35,7 @@ body {
   flex-direction: column;*/
 }
 
-/* CONTAINER
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* ----- CONTAINER ----- */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -64,20 +63,8 @@ body {
   width: 100%;
   margin-top: 15px;
 }
- 
-@media screen and (min-width: 550px) {
-  .page-header ul {
-    width: auto;
-    margin-top: 0;
-  }
- 
-  .page-header .cta-contact {
-    order: 1;
-  }
-}
 
-/* HEADER
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* ----- HEADER ----- */
 .page-header {
   background: var(--main-grey-color);
 }
@@ -89,6 +76,7 @@ body {
 }
 
 .logo{
+  padding: 0;
   display: flex;
   align-items: center;
   color: var(--main-white-color);
@@ -119,8 +107,7 @@ body {
   border-radius: 5px;
 }
 
-/* MAIN
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* ----- MAIN ----- */
 .page-main {
   display: flex;
   flex-direction: column;
@@ -138,7 +125,34 @@ body {
   font-size: large;
   text-align: center;
   padding: 0;
+  word-wrap: break-word;
+  min-height: 100px;
+  height: fit-content;
+  vertical-align: center;  
+  
+  margin-bottom: 20px;
+  overflow: auto;
+  scrollbar-width: thin;
+
 }
+.equation-renderer::-webkit-scrollbar {
+  width:100px;               /* width of the entire scrollbar */
+  height: 5px;
+}
+
+.equation-renderer::-webkit-scrollbar-track {
+  background: var(--main-grey-color);        /* color of the tracking area */
+  border: 1px solid var(--secondary-grey-color);
+  border-radius: 10px; 
+}
+
+.equation-renderer::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-grey-color);    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+  background-color: var(--secondary-grey-color);
+   /* border: 1px solid orange; creates padding around scroll thumb */
+}
+
 
 .page-main textarea{
   padding: 2%;
@@ -149,16 +163,13 @@ body {
   border-width: medium;
   resize: none;
   outline: 0;
+  font-size: 18px;
 
   flex-grow: 1;
 
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-}
-
-.page-main .buttons-box{
-  
 }
 
 .page-main button{
@@ -172,8 +183,7 @@ body {
   color: var(--main-white-color);
 }
 
-/* FOOTER
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* ----- FOOTER ----- */
 .page-footer {
   display: flex;
   flex-direction: column-reverse;
@@ -191,8 +201,7 @@ body {
   margin-right: 20px;
 }
 
-/* MQ
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* ----- MQ ----- */
 @media screen and (min-width: 550px) {
   .page-header ul {
     width: auto;
