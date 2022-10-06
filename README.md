@@ -1,5 +1,11 @@
 # LatexEquationEditor
+Test site: https://ghedo44.github.io/LatexEquationEditor/
 
 # To-Do
-- [ ] codice javascript
+## Short term
+- [ ] buttons
 - [ ] layout
+
+## Medium term
+- [ ] Snippets
+- [ ] Icons
