@@ -58,12 +58,42 @@
   
           <textarea  id="latex_editor"  spellcheck="false" placeholder="Your latext equation here "></textarea>
          
-  
-          <div class="buttons-box">
-            <button type="button" onclick="applyLatex(0)" >$$x^n$$</button>
-            <button type="button" onclick="applyLatex(2)" >$$x_n$$</button>
-            <button type="button" onclick="applyLatex(4)" >$$\sqrt x$$</button>
+          <div class="buttons-container">
+            <input type="radio" name="s" id="math" checked/>
+            <input type="radio" name="s" id="blog"/>
+            <input type="radio" name="s" id="code"/>
+            <input type="radio" name="s" id="help"/>
+            <input type="radio" name="s" id="about"/>
+            <nav>
+              <div class="slider"></div>
+              <label class="math" for="math">
+              <i class=""></i>Math
+              </label>
+              <label class="blog" for="blog">
+              <i class=""></i>Greek and Functions
+              </label>
+              <label class="code" for="code">
+                <i class=""></i>Logic
+              </label>
+              <label class="help" for="help">
+                <i class=""></i>Arrow
+              </label>
+              <label class="about" for="about">
+                <i class=""></i>Symbol
+              </label>
+            </nav>
+            <div class="buttons-box math-buttons">
+              <button type="button" onclick="applyLatex(0)" >$$x^n$$</button>
+              <button type="button" onclick="applyLatex(2)" >$$x_n$$</button>
+              <button type="button" onclick="applyLatex(4)" >$$\sqrt x$$</button>
+            </div>
+            <div class="buttons-box blog-buttons">
+              <h1>Hi</h1>
+            </div>
+            
           </div>
+
+          
         </main>
 
         <footer class="page-footer">
@@ -85,14 +115,12 @@
               </a>
             </li>
             <li>
-              
               <a href="https://github.com/Ghedo44/LatexEquationEditor" target="_blank">
                 <ion-icon name="logo-github"></ion-icon>
               </a>
             </li>
           </ul>
         </footer>
-
     
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script src="js/main.js"></script>
