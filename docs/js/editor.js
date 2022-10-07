@@ -47,3 +47,8 @@ function copyToClipboard(){
     editor.select()
     document.execCommand("copy");
 }
+
+function deleteLatex(){
+    editor.value = "";
+    editor.focus()
+}
