@@ -12,7 +12,7 @@ document.getElementById("latex_editor").addEventListener("input", () =>
 {
     if (editor.value)
     {
-        renderEquation(editor.value);
+        
     }
     else
     {

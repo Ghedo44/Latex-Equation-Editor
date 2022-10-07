@@ -18,6 +18,8 @@ const applyLatex = (id, remplaceText=true) => {
     }else{
         editor.setRangeText(`${first}${last}`, selectionStart, selectionEnd, 'end');
     }
+
+    renderEquation(editor.value);
 }
 
 // Tab skip to next braces
