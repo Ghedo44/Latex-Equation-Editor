@@ -41,5 +41,9 @@ function nextPosition(location) {
     } else {
         editor.setSelectionRange(nextWordPosition, nextWordPosition);
     }
-  }
-  
+}
+
+function copyToClipboard(){
+    editor.select()
+    document.execCommand("copy");
+}
