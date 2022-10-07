@@ -135,7 +135,6 @@ body {
   height: fit-content;
   vertical-align: center;  
   
-  margin-bottom: 20px;
   overflow: auto;
   scrollbar-width: thin;
 
@@ -158,6 +157,12 @@ body {
    /* border: 1px solid orange; creates padding around scroll thumb */
 }
 
+.page-main .editor-buttons {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; 
+}
 
 .page-main textarea{
   padding: 2%;
