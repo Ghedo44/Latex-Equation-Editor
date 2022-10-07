@@ -165,7 +165,7 @@ body {
   outline: 0;
   font-size: 18px;
 
-  flex-grow: 1;
+  flex-grow: 0.3;
 
   -webkit-box-shadow: none;
   -moz-box-shadow: none;

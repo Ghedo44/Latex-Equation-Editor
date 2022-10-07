@@ -59,11 +59,14 @@
           <textarea  id="latex_editor"  spellcheck="false" placeholder="Your latext equation here "></textarea>
          
   
-          <div class="buttons-box">
+          <div id="btns" class="buttons-box" align="center">
+            <button type="button" onclick="NewBtn()">+</button>
             <button type="button" onclick="applyLatex(0)" >$$x^n$$</button>
             <button type="button" onclick="applyLatex(2)" >$$x_n$$</button>
             <button type="button" onclick="applyLatex(4)" >$$\sqrt x$$</button>
           </div>
+          <input type="text" id="usr" style="background-color: #ffffff; border: none; margin-left: 3cm; margin-right:3cm; display:block"  />
+
         </main>
 
         <footer class="page-footer">
@@ -93,7 +96,7 @@
           </ul>
         </footer>
 
-    
+    <script src="js/create.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script src="js/main.js"></script>
     <script src="js/latex_render.js"></script>
