@@ -1,7 +1,8 @@
 let equation = "\\sum_{n=0}^\\infty\\left(\\frac{1}{2}\\right)^{n}";
-const render = document.getElementById("latex_render")
+const render = document.getElementById("latex_render");
 
-window.onload = () => {
+
+function renderEquation(equation){
     katex.render(equation, render, {
         displayMode: true
     });
@@ -11,14 +12,10 @@ document.getElementById("latex_editor").addEventListener("input", () =>
 {
     if (editor.value)
     {
-        katex.render(editor.value, render, {
-            displayMode: true
-        });
+        renderEquation(editor.value);
     }
     else
     {
-        katex.render(equation, render, {
-            displayMode: true
-        });
+        renderEquation(equation);
     }
 });

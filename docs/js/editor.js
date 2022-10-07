@@ -50,5 +50,6 @@ function copyToClipboard(){
 
 function deleteLatex(){
     editor.value = "";
+    renderEquation(equation);
     editor.focus()
 }
