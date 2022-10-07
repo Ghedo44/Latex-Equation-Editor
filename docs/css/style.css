@@ -253,7 +253,10 @@ input[type=radio]{
 
 .buttons-box {
   display:none;
-  width: 100%;
+}
+.page-main .buttons-box button {
+  width: 40px;
+  height: 40px;
 }
 
 #math:checked ~ .math-buttons{
