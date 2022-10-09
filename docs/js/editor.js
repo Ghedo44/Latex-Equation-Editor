@@ -45,6 +45,18 @@ function nextPosition(location) {
     }
 }
 
+function previousPosition(location) {
+    let currentCaretPosition = editor.selectionStart;
+    editor.focus();
+    
+    let previousWordPosition = editor.value.lastIndexOf(location, currentCaretPosition-2) + 1;
+    if (previousWordPosition < 0) {
+        editor.setSelectionRange(0, 0);
+    } else {
+        editor.setSelectionRange(previousWordPosition, previousWordPosition);
+    }
+}
+
 function copyToClipboard(){
     editor.select()
     document.execCommand("copy");
