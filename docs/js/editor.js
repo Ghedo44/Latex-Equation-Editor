@@ -23,15 +23,34 @@ const applyLatex = (id, remplaceText=true) => {
 }
 
 // Tab skip to next braces
-window.addEventListener('keydown', function(event) {
-    const key = event.key;
-    if(key === 'Tab') {
-        event.preventDefault();
-        nextPosition('{');
-      }
-  });
+var keys;
 
-function nextPosition(location) {
+document.addEventListener("keydown", function(event) {
+    // keycode shift = 16
+    // keycode tab = 9
+    
+    keys = (keys || []);
+    keys[event.keyCode]=true;
+    
+    if (keys[9] && keys[16]){
+        event.preventDefault();
+        previousPosition();
+    }
+    else{
+        if(event.key === 'Tab') {
+            event.preventDefault();
+            nextPosition();
+        }
+    }
+      
+} , false);
+
+document.addEventListener("keyup", function (event) {
+    keys[event.keyCode]=false;
+    stop();
+}, false);
+
+function nextPosition(location='{') {
     let currentCaretPosition = editor.selectionStart;
     editor.focus();
     
@@ -45,11 +64,11 @@ function nextPosition(location) {
     }
 }
 
-function previousPosition(location) {
+function previousPosition(location='}') {
     let currentCaretPosition = editor.selectionStart;
     editor.focus();
     
-    let previousWordPosition = editor.value.lastIndexOf(location, currentCaretPosition-2) + 1;
+    let previousWordPosition = editor.value.lastIndexOf(location, currentCaretPosition-1);
     if (previousWordPosition < 0) {
         editor.setSelectionRange(0, 0);
     } else {
