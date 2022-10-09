@@ -35,9 +35,6 @@ a {
 
 body {
   font: 16px/1.5 "Dosis", sans-serif;
-  /*IE FIX*/
-  /*display: flex;
-  flex-direction: column;*/
 }
 
 /* ----- CONTAINER ----- */
@@ -131,9 +128,10 @@ body {
   text-align: center;
   padding: 0;
   word-wrap: break-word;
-  min-height: 100px;
   height: fit-content;
   vertical-align: center;  
+
+  min-height: 100px;
   
   overflow: auto;
   scrollbar-width: thin;
@@ -151,16 +149,15 @@ body {
 }
 
 .equation-renderer::-webkit-scrollbar-thumb {
-  background-color: var(--secondary-grey-color);    /* color of the scroll thumb */
-  border-radius: 10px;       /* roundness of the scroll thumb */
+  background-color: var(--secondary-grey-color); 
+  border-radius: 10px; 
   background-color: var(--secondary-grey-color);
-   /* border: 1px solid orange; creates padding around scroll thumb */
 }
 
 .page-main .editor-buttons {
-  display: flex;                  /* establish flex container */
-  flex-direction: row;            /* default value; can be omitted */
-  flex-wrap: nowrap;              /* default value; can be omitted */
+  display: flex; 
+  flex-direction: row; 
+  flex-wrap: nowrap; 
   justify-content: space-between; 
 }
 
@@ -175,7 +172,7 @@ body {
   outline: 0;
   font-size: 18px;
 
-  flex-grow: 1;
+  min-height: 300px;
 
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
@@ -185,6 +182,7 @@ body {
 /*TABS*/
 .buttons-container{
   margin-top: 20px;
+  flex-grow: 1; 
 }
 
 .buttons-container nav{
@@ -314,6 +312,12 @@ input[type=radio]{
 
   .page-footer ul {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page-main #latex_editor {
+    min-height: 200px;
   }
 }
 
