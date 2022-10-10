@@ -164,7 +164,7 @@ body {
   justify-content: space-between; 
 }
 
-.page-main textarea{
+.eq{
   padding: 2%;
   color: var(--main-white-color);
   background-color: var(--main-grey-color);
@@ -321,4 +321,15 @@ input[type=radio]{
   body {
     font-size: 18px;
   }
+}
+
+/* Quick buttons menu */
+
+.page-main .vertical-menu{
+  display: none;
+  background-size: contain;
+  border-radius: 25px;
+  position: absolute;
+  background-color: #323437;
+
 }
