@@ -3,9 +3,11 @@ const render = document.getElementById("latex_render");
 
 
 function renderEquation(equation){
-    katex.render(equation, render, {
-        displayMode: true
+        katex.render(equation, render, {
+        displayMode: true,
+        throwOnError: false
     });
+    
 }
 
 document.getElementById("latex_editor").addEventListener("input", () => 
