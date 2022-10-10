@@ -331,5 +331,7 @@ input[type=radio]{
   border-radius: 25px;
   position: sticky;
   background-color: #323437;
-
+  border-radius: 10px ;
+  border-color: rgb(255, 255, 255);
+  border-style: inset;
 }
