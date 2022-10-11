@@ -160,7 +160,7 @@ body {
   flex-wrap: nowrap; 
   justify-content: space-between; 
 }
-
+/*
 .page-main textarea{
   padding: 2%;
   color: var(--main-white-color);
@@ -177,6 +177,60 @@ body {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+}*/
+
+.input-container {
+  min-height: 300px;
+  position: relative;
+  
+  transform: translateZ(0) scale(1, 1);
+
+  
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.input-container textarea {
+  padding: 2%;
+  color: var(--main-white-color);
+  
+  background-color: var(--main-grey-color);
+  border-color: var(--secondary-grey-color);
+  border-radius: 15px;
+  border-width: medium;
+
+  resize: none;
+  outline: 0;
+  
+  position: absolute;
+  min-height: 300px;
+  resize: none;
+  width: 100%;
+
+  
+  font: 16px/1.5 "Dosis", sans-serif;
+  
+  caret-color: var(--main-yellow-color);
+  background: transparent;
+  z-index: 5;
+}
+.input-container textarea::placeholder {
+  color: rgba(34, 34, 34, 0.55);
+}
+
+.suggestion-container {
+  position: fixed;
+  width: 100%;
+  left: 3px;
+  top: 3px;
+  display: flex;
+  align-items: center;
+  color: var(--secondary-grey-color);
+  
+  font: 16px/1.5 "Dosis", sans-serif;
+  padding: 2%;
+  pointer-events: none;
 }
 
 /*TABS*/

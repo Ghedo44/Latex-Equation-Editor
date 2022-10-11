@@ -76,8 +76,14 @@
             
           </div>
 
-          <textarea  id="latex_editor"  spellcheck="false" placeholder="Your latext equation here "></textarea>
-         
+          <div class="input-container">
+            
+            <textarea  id="latex_editor"   spellcheck="false" placeholder="Your latext equation here "></textarea> <!-- onkeyup="getValue(this.value)" -->
+          
+            <span class="suggestion-container"></span>
+            
+          </div>
+
           <div class="buttons-container">
             <input type="radio" name="s" id="math" checked/>
             <input type="radio" name="s" id="blog"/>
@@ -369,6 +375,7 @@
           </ul>
         </footer>
     
+    <script src="js/autocomplete.js"></script>
     <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
     <script src="js/main.js"></script>
     <script src="js/latex_render.js"></script>
