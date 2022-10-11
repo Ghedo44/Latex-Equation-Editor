@@ -36,7 +36,7 @@ textInputEl.addEventListener("input", e => {
    else{
       suggestedWordsArray = filterArray(latexCodes, inputValue);
    }
-	suggestedWord = suggestedWordsArray[0];
+	suggestedWord = latexCodes[suggestedWordsArray[0]]+latexCodes[suggestedWordsArray[0]+1];
 
 	if (suggestedWord != undefined) {
 		suggestionEl.innerHTML = textInputEl.value.slice(0, textInputEl.value.length - inputValue.length).replace(/\n/g, '<br>\n') + suggestedWord;
@@ -95,7 +95,8 @@ textInputEl.addEventListener("keydown", e => {
          	let inputValue = e.target.value.split('\\');
 	      	inputValue = "\\" + inputValue[inputValue.length-1];
 
-			textInputEl.value = textInputEl.value.slice(0, textInputEl.value.length - inputValue.length) + suggestedWordsArray[currentWordIndex];
+			textInputEl.value = textInputEl.value.slice(0, textInputEl.value.length - inputValue.length);
+			applyLatex(suggestedWordsArray[currentWordIndex])
 			suggestionEl.innerHTML = "";
          	renderEquation(editor.value);
 		}
@@ -104,8 +105,17 @@ textInputEl.addEventListener("keydown", e => {
 
 
 function filterArray(array, item, reverse = false) {
+	var arr = [5, 10, 2, 7];
 
-	
+	var newArr = array.reduce(function(acc, curr, index) {
+		if (compareTwoStrings(curr, item)) {
+		  acc.push(index);
+		}
+		return acc;
+	  }, []);
+	  return newArr;
+	  
+	  /*console.log(newArr);
 	if (reverse) {
 		return array
 			.filter(word => compareTwoStrings(word, item))
@@ -114,7 +124,7 @@ function filterArray(array, item, reverse = false) {
 		return array
 			.filter(word => compareTwoStrings(word, item))
          .sort((a, b) => a.length - b.length);
-	}
+	}*/
 }
 
 function removeDuplicatesFromArray(array) {
@@ -123,5 +133,5 @@ function removeDuplicatesFromArray(array) {
 
 function compareTwoStrings(string, subString) {
 	let temp = string.split("", subString.length).join("");
-	if (subString == temp) return subString;
+	if (subString == temp) return true;
 }
