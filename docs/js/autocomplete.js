@@ -27,16 +27,17 @@ textInputEl.addEventListener("input", e => {
 		textInputEl.value = "";
 	}
 
-	let inputValue = e.target.value.split('\\');
-	inputValue = "\\" + inputValue[inputValue.length-1];
+	let input = e.target.value.split('\\');
+	console.log(input);
+	let inputValue = "\\" + input[input.length-1];
+	console.log(inputValue);
 	
-   if (inputValue.length < 2){
-      suggestedWordsArray = filterArray(latexCodes, inputValue, true);
-   }
-   else{
-      suggestedWordsArray = filterArray(latexCodes, inputValue);
-   }
-	suggestedWord = latexCodes[suggestedWordsArray[0]]+latexCodes[suggestedWordsArray[0]+1];
+   	if (input.length > 1) {
+		suggestedWordsArray = filterArray(latexCodes, inputValue);
+
+		suggestedWord = latexCodes[suggestedWordsArray[0]]+latexCodes[suggestedWordsArray[0]+1];
+	}
+	else{suggestedWord = undefined}
 
 	if (suggestedWord != undefined) {
 		suggestionEl.innerHTML = textInputEl.value.slice(0, textInputEl.value.length - inputValue.length).replace(/\n/g, '<br>\n') + suggestedWord;
@@ -48,7 +49,7 @@ textInputEl.addEventListener("input", e => {
 
 	if (textInputEl.value.length == 0) {
 		insertText = false;
-      suggestionEl.innerHTML = "";
+      	suggestionEl.innerHTML = "";
 	}
 });
 
@@ -75,13 +76,13 @@ textInputEl.addEventListener("keydown", e => {
 		if (e.keyCode == UP_ARROW_KEYCODE) {
 			if (currentWordIndex == 0) return;
 			currentWordIndex--;
-			suggestionEl.innerHTML = suggestedWordsArray[currentWordIndex];
+			suggestionEl.innerHTML = latexCodes[suggestedWordsArray[currentWordIndex]]+latexCodes[suggestedWordsArray[currentWordIndex]+1]; //suggestedWordsArray[currentWordIndex];
 		}
 
 		if (e.keyCode == DOWN_ARROW_KEYCODE) {
 			if (currentWordIndex == suggestedWordsArray.length - 1) return;
 			currentWordIndex++;
-			suggestionEl.innerHTML = suggestedWordsArray[currentWordIndex];
+			suggestionEl.innerHTML = latexCodes[suggestedWordsArray[currentWordIndex]]+latexCodes[suggestedWordsArray[currentWordIndex]+1]; //suggestedWordsArray[currentWordIndex];
 		}
 
 		if (e.keyCode == BACKSPACE_KEYCODE) {
@@ -104,27 +105,15 @@ textInputEl.addEventListener("keydown", e => {
 });
 
 
-function filterArray(array, item, reverse = false) {
-	var arr = [5, 10, 2, 7];
+function filterArray(array, item) {
 
-	var newArr = array.reduce(function(acc, curr, index) {
+	return array.reduce(function(acc, curr, index) {
 		if (compareTwoStrings(curr, item)) {
 		  acc.push(index);
 		}
 		return acc;
 	  }, []);
-	  return newArr;
 	  
-	  /*console.log(newArr);
-	if (reverse) {
-		return array
-			.filter(word => compareTwoStrings(word, item))
-			.sort((a, b) => b.length - a.length);
-	} else {
-		return array
-			.filter(word => compareTwoStrings(word, item))
-         .sort((a, b) => a.length - b.length);
-	}*/
 }
 
 function removeDuplicatesFromArray(array) {
