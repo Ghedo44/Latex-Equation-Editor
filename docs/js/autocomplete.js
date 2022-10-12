@@ -37,7 +37,7 @@ textInputEl.addEventListener("input", e => {
 	
 
 	if (suggestedWord != undefined) {
-		suggestionEl.innerHTML = textInputEl.value.slice(0, caretPosition - inputValue.length) + suggestedWord; //.replace(/\n/g, '<br>\n').replace(' ','&nbsp;')
+		suggestionEl.innerHTML = suggestedWord;
 	}
 
 	if (inputValue.length == 0 || suggestedWordsArray.length == 0) {
@@ -47,23 +47,14 @@ textInputEl.addEventListener("input", e => {
 	if (textInputEl.value.length == 0) {
 		insertText = false;
       	suggestionEl.innerHTML = "";
+
+		suggestedWord = undefined;
+		suggestedWordsArray = [];
+		currentWordIndex = 0;
 	}
 });
 
 textInputEl.addEventListener("keydown", e => {
-	/*if (e.keyCode == ENTER_KEYCODE) {
-		if (textInputEl.value.length == 0) return;
-		let inputValue = textInputEl.value;
-		let words = inputValue.split(" ");
-		for (let i in words) {
-			if (words[i].length != 0) {
-				wordsArray.push(words[i]);
-				textInputEl.value = "";
-				suggestionEl.innerHTML = "";
-			}
-		}
-		wordsArray = removeDuplicatesFromArray(wordsArray);
-	}*/
 
    if (textInputEl.value.length == 0) {
       suggestionEl.innerHTML = "";
@@ -126,10 +117,6 @@ function filterArray(array, item) {
 		return acc;
 	  }, []);
 	  
-}
-
-function removeDuplicatesFromArray(array) {
-	return [...new Set(array.map(i => i))];
 }
 
 function compareTwoStrings(string, subString) {

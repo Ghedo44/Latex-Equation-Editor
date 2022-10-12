@@ -222,16 +222,9 @@ body {
 }
 
 .suggestion-container {
-  position: fixed;
-  width: 100%;
-  left: 3px;
-  top: 3px;
-  display: flex;
-  align-items: center;
+  
   color: var(--secondary-grey-color);
   
-  font: 16px/1.5 "Dosis", sans-serif;
-  padding: 2%;
   pointer-events: none;
 
   white-space: pre;
