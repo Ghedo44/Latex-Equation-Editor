@@ -160,42 +160,11 @@ body {
   flex-wrap: nowrap; 
   justify-content: space-between; 
 }
-/*
-.page-main textarea{
-  padding: 2%;
-  color: var(--main-white-color);
-  background-color: var(--main-grey-color);
-  border-color: var(--secondary-grey-color);
-  border-radius: 15px;
-  border-width: medium;
-  resize: none;
-  outline: 0;
-  font-size: 18px;
 
-  min-height: 300px;
-
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}*/
-
-.input-container {
-  min-height: 300px;
-  position: relative;
-  
-  transform: translateZ(0) scale(1, 1);
-
-  
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
-.input-container textarea {
+.page-main textarea {
   padding: 2%;
   color: var(--main-white-color);
   
-  background-color: var(--main-grey-color);
   border-color: var(--secondary-grey-color);
   border-radius: 15px;
   border-width: medium;
@@ -203,30 +172,21 @@ body {
   resize: none;
   outline: 0;
   
-  position: absolute;
-  min-height: 300px;
+  min-height: 200px;
   resize: none;
-  width: 100%;
-
   
-  font: 16px/1.5 "Dosis", sans-serif;
-  
-  caret-color: var(--main-yellow-color);
+  caret-color: var(--main-yellow-color);  
   background: transparent;
-  z-index: 5;
-
   white-space: pre;
-}
-.input-container textarea::placeholder {
-  color: rgba(34, 34, 34, 0.55);
+  
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .suggestion-container {
-  
   color: var(--secondary-grey-color);
-  
   pointer-events: none;
-
   white-space: pre;
 }
 

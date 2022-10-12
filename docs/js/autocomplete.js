@@ -1,6 +1,6 @@
 
 // Code By Webdevtrick ( https://webdevtrick.com )
-console.clear();
+// console.clear();
 
 const textInputEl = document.querySelector("#latex_editor");
 const suggestionEl = document.querySelector(".suggestion-container");
@@ -15,7 +15,7 @@ const LEFT_ARROW_KEYCODE = 37;
 const RIGHT_ARROW_KEYCODE = 39;
 
 
-let suggestedWord = undefined;
+let suggestedWord = "";
 let suggestedWordsArray = [];
 let currentWordIndex = 0;
 let insertText = false;
@@ -33,8 +33,7 @@ textInputEl.addEventListener("input", e => {
 	let inputValue = e.target.value.substring(e.target.value.lastIndexOf('\\', caretPosition), caretPosition);
 	
 	suggestedWordsArray = filterArray(latexCodes, inputValue);
-	suggestedWord = latexCodes[suggestedWordsArray[0]]+latexCodes[suggestedWordsArray[0]+1];
-	
+	if (suggestedWordsArray.length>0) suggestedWord = latexCodes[suggestedWordsArray[0]]+latexCodes[suggestedWordsArray[0]+1];
 
 	if (suggestedWord != undefined) {
 		suggestionEl.innerHTML = suggestedWord;
@@ -48,7 +47,7 @@ textInputEl.addEventListener("input", e => {
 		insertText = false;
       	suggestionEl.innerHTML = "";
 
-		suggestedWord = undefined;
+		suggestedWord = "";
 		suggestedWordsArray = [];
 		currentWordIndex = 0;
 	}
@@ -70,23 +69,17 @@ textInputEl.addEventListener("keydown", e => {
 
 		if (e.keyCode == DOWN_ARROW_KEYCODE) {
 			e.preventDefault();
-			if (currentWordIndex == suggestedWordsArray.length - 1) return;
+			if (currentWordIndex == suggestedWordsArray.length - 1 || suggestedWordsArray.length == 0) return;
 			currentWordIndex++;
 			suggestionEl.innerHTML = latexCodes[suggestedWordsArray[currentWordIndex]]+latexCodes[suggestedWordsArray[currentWordIndex]+1]; //suggestedWordsArray[currentWordIndex];
-		}
-
-		if (e.keyCode == BACKSPACE_KEYCODE) {
-			currentWordIndex = 0;
 		}
 	}
 
 	
 	if (e.keyCode == TAB_KEYCODE) {
 		e.preventDefault();
-		if (suggestedWord != undefined && suggestedWord != "" && suggestedWord != NaN) {
-			console.log(suggestedWord);
-
-         	let caretPosition = e.target.selectionStart;
+		if (suggestedWord != undefined && suggestedWord != "") {
+			let caretPosition = e.target.selectionStart;
 			let inputValue = e.target.value.substring(e.target.value.lastIndexOf('\\', caretPosition), caretPosition);
 
 			let text = textInputEl.value
@@ -100,7 +93,7 @@ textInputEl.addEventListener("keydown", e => {
 			suggestionEl.innerHTML = "";
          	renderEquation(editor.value);
 
-			 suggestedWord = undefined;
+			 suggestedWord = "";
 			 suggestedWordsArray = [];
 			 currentWordIndex = 0;
 		}
