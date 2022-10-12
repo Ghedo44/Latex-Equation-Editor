@@ -214,6 +214,8 @@ body {
   caret-color: var(--main-yellow-color);
   background: transparent;
   z-index: 5;
+
+  white-space: pre;
 }
 .input-container textarea::placeholder {
   color: rgba(34, 34, 34, 0.55);
@@ -231,6 +233,8 @@ body {
   font: 16px/1.5 "Dosis", sans-serif;
   padding: 2%;
   pointer-events: none;
+
+  white-space: pre;
 }
 
 /*TABS*/

@@ -11,9 +11,11 @@ const BACKSPACE_KEYCODE = 8;
 const UP_ARROW_KEYCODE = 38;
 const DOWN_ARROW_KEYCODE = 40;
 const SPACE_KEYCODE = 32;
+const LEFT_ARROW_KEYCODE = 37;
+const RIGHT_ARROW_KEYCODE = 39;
 
 
-let suggestedWord = "";
+let suggestedWord = undefined;
 let suggestedWordsArray = [];
 let currentWordIndex = 0;
 let insertText = false;
@@ -27,20 +29,15 @@ textInputEl.addEventListener("input", e => {
 		textInputEl.value = "";
 	}
 
-	let input = e.target.value.split('\\');
-	console.log(input);
-	let inputValue = "\\" + input[input.length-1];
-	console.log(inputValue);
+	let caretPosition = e.target.selectionStart;
+	let inputValue = e.target.value.substring(e.target.value.lastIndexOf('\\', caretPosition), caretPosition);
 	
-   	if (input.length > 1) {
-		suggestedWordsArray = filterArray(latexCodes, inputValue);
-
-		suggestedWord = latexCodes[suggestedWordsArray[0]]+latexCodes[suggestedWordsArray[0]+1];
-	}
-	else{suggestedWord = undefined}
+	suggestedWordsArray = filterArray(latexCodes, inputValue);
+	suggestedWord = latexCodes[suggestedWordsArray[0]]+latexCodes[suggestedWordsArray[0]+1];
+	
 
 	if (suggestedWord != undefined) {
-		suggestionEl.innerHTML = textInputEl.value.slice(0, textInputEl.value.length - inputValue.length).replace(/\n/g, '<br>\n') + suggestedWord;
+		suggestionEl.innerHTML = textInputEl.value.slice(0, caretPosition - inputValue.length) + suggestedWord; //.replace(/\n/g, '<br>\n').replace(' ','&nbsp;')
 	}
 
 	if (inputValue.length == 0 || suggestedWordsArray.length == 0) {
@@ -54,7 +51,7 @@ textInputEl.addEventListener("input", e => {
 });
 
 textInputEl.addEventListener("keydown", e => {
-	if (e.keyCode == ENTER_KEYCODE) {
+	/*if (e.keyCode == ENTER_KEYCODE) {
 		if (textInputEl.value.length == 0) return;
 		let inputValue = textInputEl.value;
 		let words = inputValue.split(" ");
@@ -66,7 +63,7 @@ textInputEl.addEventListener("keydown", e => {
 			}
 		}
 		wordsArray = removeDuplicatesFromArray(wordsArray);
-	}
+	}*/
 
    if (textInputEl.value.length == 0) {
       suggestionEl.innerHTML = "";
@@ -74,12 +71,14 @@ textInputEl.addEventListener("keydown", e => {
 
 	if (textInputEl.value.length != 0) {
 		if (e.keyCode == UP_ARROW_KEYCODE) {
+			e.preventDefault();
 			if (currentWordIndex == 0) return;
 			currentWordIndex--;
 			suggestionEl.innerHTML = latexCodes[suggestedWordsArray[currentWordIndex]]+latexCodes[suggestedWordsArray[currentWordIndex]+1]; //suggestedWordsArray[currentWordIndex];
 		}
 
 		if (e.keyCode == DOWN_ARROW_KEYCODE) {
+			e.preventDefault();
 			if (currentWordIndex == suggestedWordsArray.length - 1) return;
 			currentWordIndex++;
 			suggestionEl.innerHTML = latexCodes[suggestedWordsArray[currentWordIndex]]+latexCodes[suggestedWordsArray[currentWordIndex]+1]; //suggestedWordsArray[currentWordIndex];
@@ -90,16 +89,29 @@ textInputEl.addEventListener("keydown", e => {
 		}
 	}
 
-	if (suggestedWord != undefined && suggestedWord != "") {
-		if (e.keyCode == TAB_KEYCODE) {
-			e.preventDefault();
-         	let inputValue = e.target.value.split('\\');
-	      	inputValue = "\\" + inputValue[inputValue.length-1];
+	
+	if (e.keyCode == TAB_KEYCODE) {
+		e.preventDefault();
+		if (suggestedWord != undefined && suggestedWord != "" && suggestedWord != NaN) {
+			console.log(suggestedWord);
 
-			textInputEl.value = textInputEl.value.slice(0, textInputEl.value.length - inputValue.length);
+         	let caretPosition = e.target.selectionStart;
+			let inputValue = e.target.value.substring(e.target.value.lastIndexOf('\\', caretPosition), caretPosition);
+
+			let text = textInputEl.value
+			let textBeforeCaret = text.slice(0, caretPosition - inputValue.length);
+			let textAfterCaret = text.slice(caretPosition);
+			
+			textInputEl.setRangeText(`${textBeforeCaret}${textAfterCaret}`, 0, text.length, 'start');
+        	textInputEl.selectionStart = textBeforeCaret.length;
+
 			applyLatex(suggestedWordsArray[currentWordIndex])
 			suggestionEl.innerHTML = "";
          	renderEquation(editor.value);
+
+			 suggestedWord = undefined;
+			 suggestedWordsArray = [];
+			 currentWordIndex = 0;
 		}
 	}
 });

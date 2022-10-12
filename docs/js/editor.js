@@ -1,25 +1,28 @@
 const editor = document.querySelector("#latex_editor");
 
-
 const applyLatex = (id, remplaceText=true) => {
-    let first = latexCodes[id]; 
-    let last = latexCodes[id+1];
-    editor.focus();
+    if (id != undefined && id != NaN)
+    {
+        let first = latexCodes[id]; 
+        let last = latexCodes[id+1];
+        editor.focus();
 
-    const selectionStart = editor.selectionStart;
-    const selectionEnd = editor.selectionEnd;
+        const selectionStart = editor.selectionStart;
+        const selectionEnd = editor.selectionEnd;
 
-    const editorText = editor.value;
-    const selectedText = editorText.substring(selectionStart, selectionEnd) || '';
-    
-    if(remplaceText){
-        editor.setRangeText(`${first}${selectedText}${last}`, selectionStart, selectionEnd, 'start');
-        editor.selectionStart += first.length + selectedText.length;
-    }else{
-        editor.setRangeText(`${first}${last}`, selectionStart, selectionEnd, 'end');
+        const editorText = editor.value;
+        const selectedText = editorText.substring(selectionStart, selectionEnd) || '';
+        
+        if(remplaceText){
+            editor.setRangeText(`${first}${selectedText}${last}`, selectionStart, selectionEnd, 'start');
+            editor.selectionStart += first.length + selectedText.length;
+        }else{
+            editor.setRangeText(`${first}${last}`, selectionStart, selectionEnd, 'end');
+        }
+
+        renderEquation(editor.value);
     }
-
-    renderEquation(editor.value);
+    
 }
 
 // Tab skip to next braces
@@ -32,16 +35,15 @@ document.addEventListener("keydown", function(event) {
     keys = (keys || []);
     keys[event.keyCode]=true;
     
-    if (keys[9] && keys[16]){
+    if (keys[TAB_KEYCODE] && keys[LEFT_ARROW_KEYCODE]){
         event.preventDefault();
         previousPosition();
     }
-    else{
-        if(event.key === 'Tab') {
-            event.preventDefault();
-            nextPosition();
-        }
+    if(keys[TAB_KEYCODE] && keys[RIGHT_ARROW_KEYCODE]) {
+        event.preventDefault();
+        nextPosition();
     }
+    
       
 } , false);
 
